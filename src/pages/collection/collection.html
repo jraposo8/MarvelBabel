@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+     <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Collection</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item (click)="goDescription(comic.id)" *ngFor="let comic of comics">
+         <ion-avatar item-left >
+           <img src="{{comic.tpath}}.{{comic.textension}}">
+         </ion-avatar>
+         <h2>{{comic.name}}</h2>
+       </ion-item> 
+     </ion-list>
+
+</ion-content>

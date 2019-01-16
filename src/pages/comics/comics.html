@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+       </button>
+       <ion-title>Comics</ion-title>
+     </ion-navbar>
+  
+</ion-header>
+
+
+<ion-content class="home">
+
+  <ion-searchbar
+    [(ngModel)]="myInput"
+    (ionInput)="onInput($event)">
+  </ion-searchbar>
+
+
+  <ion-list>
+     <ion-item class="comic" (click)="getDescription(comic.id)" *ngFor="let comic of comics">
+      <ion-avatar item-left >
+        <img src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}">
+      </ion-avatar>
+      <h2>{{comic.title}}</h2>
+    </ion-item> 
+  </ion-list>
+</ion-content>

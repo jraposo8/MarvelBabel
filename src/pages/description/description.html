@@ -1,0 +1,55 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>description</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  
+    <ion-card>
+        
+      <!--<img src="{{comic.thumb}}"/>-->
+
+      <ion-slides loop="true">
+          <ion-slide *ngFor="let image of comic.images">
+            <img src="{{image.path}}.{{image.extension}}">
+          </ion-slide>
+        </ion-slides>
+
+  
+      <ion-card-content>
+        <ion-card-title>
+            {{comic.name}}
+        </ion-card-title>
+        <p>
+            {{comic.description}}
+        </p>
+      </ion-card-content>
+
+      <div *ngIf="comic.characters?.length > 0" >
+
+          <h2 padding [ngStyle]="{'font-weight': 'bold'}">Characters:</h2>
+         <p *ngFor="let character of comic.characters" padding [ngStyle]="{'font-weight': 'bold'}">
+              {{character.name}}</p>
+        </div>
+     
+    </ion-card>
+
+    <ion-row justify-content-center>
+
+    <!--<button ion-button [color]="primary" round (click)="addFavouriteComic()" >Add to collection</button>-->
+
+
+    <button ion-button color="primary" round (click)="addFavouriteComic()" *ngIf="!favourite;else remove">Add to collection</button>
+    <ng-template #remove>
+        <button ion-button color="danger" round (click)="removeFavouriteComic()">Remove from collection</button>
+    </ng-template>
+  </ion-row>
+  <hr>
+
+    
+  
+  </ion-content>
